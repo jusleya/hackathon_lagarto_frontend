@@ -1,0 +1,47 @@
+//-----------------
+// Variables
+//-----------------
+@import '../../../assets/style/variables.scss';
+
+.navbar {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  background: $azul_claro;
+}
+
+.navbar-item {
+  font-family: $family-primary;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  color: white;
+
+  &:hover {
+    color: white !important;
+    background-color: $azul_hover !important;
+  }
+}
+
+// Navbar Toogle
+@media (max-width: 1087px) {
+  .navbar-item {
+    color: $azul_escuro;
+  }
+  .navbar-burger {
+    color: white;
+    height: 64px;
+  }
+
+  .navbar-link {
+    &:hover {
+      color: white !important;
+    }
+  }
+
+  .navbar-item {
+    &:hover {
+      color: $azul_claro !important;
+      background-color: transparent !important;
+      border-bottom: 1px solid green !important;
+    }
+  }
+}

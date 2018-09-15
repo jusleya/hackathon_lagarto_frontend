@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 //Components
-// import Header from './components/Header';
-// import Footer from './components/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 //Views
 // import Home from './views/Home';
@@ -11,11 +11,11 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 const Main = () => (
   <Router>
     <main>
-      {/* <Header /> */}
+      <Header />
       <Switch>
         {/* <Route exact path='/' component={Home} /> */}
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </main>
   </Router>
 );

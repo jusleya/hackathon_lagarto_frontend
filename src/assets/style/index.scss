@@ -1,0 +1,23 @@
+//-----------------
+// Variables
+//-----------------
+@import './variables.scss';
+
+//-----------------
+// Styles
+//-----------------
+@import 'bulma/bulma';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+//-----------------
+// Base
+//-----------------
+body {
+  background: white;
+}
+
+//----------------------
+// General
+//----------------------
+@import '../../components/Header/css/style.scss';
+@import '../../components/Footer/css/style.scss';

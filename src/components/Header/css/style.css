@@ -1,0 +1,26 @@
+.navbar {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  background: #095BA2; }
+
+.navbar-item {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  color: white; }
+  .navbar-item:hover {
+    color: white !important;
+    background-color: #0172B9 !important; }
+
+@media (max-width: 1087px) {
+  .navbar-item {
+    color: #0F218B; }
+  .navbar-burger {
+    color: white;
+    height: 64px; }
+  .navbar-link:hover {
+    color: white !important; }
+  .navbar-item:hover {
+    color: #095BA2 !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid green !important; } }
