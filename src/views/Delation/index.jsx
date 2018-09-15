@@ -213,7 +213,7 @@ class Delation extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="column is-3 paddingLeft">
+                  <div className="column is-4 paddingLeft">
                     <div className="field">
                       <div className="field-label is-normal">
                         <label className="label">Mão armada:</label>
@@ -234,7 +234,7 @@ class Delation extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="column is-4">
+                  <div className="column is-3">
                     <div className="field">
                       <div className="field-label is-normal">
                         <label className="label">Tipo da arma:</label>
@@ -249,6 +249,49 @@ class Delation extends Component {
                                 <option>Arma de fogo</option>
                               </select>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="columns is-centered">
+                  <div className="column is-10">
+                    <div className="field">
+                      <div className="field-label is-normal">
+                        <label className="label">Item perdido:</label>
+                      </div>
+                      <div className="field-body">
+                        <div className="field">
+                          <div className="control">
+                            <input
+                              className="input is-rounded"
+                              type="text"
+                              placeholder="Ex.: Foi roubado um celular motorola de modelo Moto G4."
+                              // onChange={props.onChange}
+                              // value={props.value}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="columns is-centered">
+                  <div className="column is-10">
+                    <div className="field">
+                      <div className="field-label is-normal">
+                        <label className="label">Descreva de forma detalhada o criminoso (Informe características como cicatrizes, tatuagens, vestimentas, etc):</label>
+                      </div>
+                      <div className="field-body">
+                        <div className="field">
+                          <div className="control">
+                            <textarea
+                              className="textarea"
+                              placeholder="Ex.: O criminoso estava com uma bermuda verde e de blusa vermelha, com um boné branco. Possuía uma tatuagem de caveira na canela."
+                            />
                           </div>
                         </div>
                       </div>
