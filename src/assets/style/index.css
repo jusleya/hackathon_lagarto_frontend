@@ -6460,3 +6460,25 @@ body {
 @media (max-width: 768px) {
   #footer {
     text-align: center; } }
+
+#button-component .button {
+  border: 2px solid;
+  border-radius: 2px;
+  font-family: "Roboto", sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: uppercase;
+  min-height: 45px;
+  min-width: 200px;
+  padding: 5px 5px 5px 10px; }
+
+#button-component .active {
+  color: #0F218B;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-in;
+  -moz-transition: 0.2s ease-in;
+  -o-transition: 0.2s ease-in;
+  transition: 0.2s ease-in; }
+  #button-component .active:hover {
+    color: white;
+    background-color: #0172B9; }

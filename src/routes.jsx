@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 
 //Views
 import Home from './views/Home';
+import Delation from './views/Delation';
 
 const Main = () => (
   <Router>
@@ -14,6 +15,7 @@ const Main = () => (
       <Header />
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/denuncia' component={Delation} />
       </Switch>
       <Footer />
     </main>
