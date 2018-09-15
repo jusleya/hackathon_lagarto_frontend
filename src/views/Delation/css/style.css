@@ -1,0 +1,25 @@
+#delation .label {
+  color: #333233;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  padding-left: 10px;
+  text-align: left; }
+
+#delation .opcoes {
+  padding-left: 20px; }
+
+#delation .paddingLeft {
+  padding-left: 20px; }
+
+#delation .texto {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-align: justify; }
+
+#delation .titulo {
+  color: #333233;
+  font-size: 40px;
+  font-weight: 200;
+  padding-bottom: 30px;
+  text-align: center; }

@@ -1,0 +1,37 @@
+//----------------------
+// Variables
+//----------------------
+@import '../../../assets/style/variables.scss';
+
+#delation {
+  .label {
+    color: $cinza;
+    font-family: $family-second;
+    font-size: 18px;
+    font-weight: 200;
+    padding-left: 10px;
+    text-align: left;
+  }
+
+  .opcoes {
+    padding-left: 20px;
+  }
+
+  .paddingLeft {
+    padding-left: 20px;
+  }
+
+  .texto {
+    font-family: $family-second;
+    font-size: 16px;
+    text-align: justify;
+  }
+  
+  .titulo {
+    color: $cinza;
+    font-size: 40px;
+    font-weight: 200;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+}

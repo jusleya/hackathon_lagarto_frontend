@@ -24,7 +24,7 @@ class Home extends Component {
                 <p className="descricao">
                   O site é dedicado a denuncias de criminalidades ocorridas nos Campus UFS. Todos os dados informados são de total responsabilidade do usuário no qual, caso seja necessário, poderá ser chamado para comprovação dos fatos informados.
                 </p>
-                <div align="center"><Button type="" link="/denuncia">Denuncie</Button></div>
+                <div align="center"><Button type="" link="/denuncie">Denuncie</Button></div>
               </div>
             </div>
           </div>

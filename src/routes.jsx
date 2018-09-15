@@ -15,7 +15,7 @@ const Main = () => (
       <Header />
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/denuncia' component={Delation} />
+        <Route exact path='/denuncie' component={Delation} />
       </Switch>
       <Footer />
     </main>
