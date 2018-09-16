@@ -13,6 +13,8 @@
     background-color: #0172B9 !important; }
 
 @media (max-width: 1087px) {
+  .logo {
+    color: white; }
   .navbar-item {
     color: #0F218B; }
   .navbar-burger {

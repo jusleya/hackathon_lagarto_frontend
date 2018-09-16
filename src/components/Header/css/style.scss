@@ -23,6 +23,10 @@
 
 // Navbar Toogle
 @media (max-width: 1087px) {
+  .logo {
+    color: white;
+  }
+  
   .navbar-item {
     color: $azul_escuro;
   }

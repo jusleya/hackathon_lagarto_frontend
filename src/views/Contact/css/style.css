@@ -1,0 +1,14 @@
+#contact .align {
+  text-align: center; }
+
+#contact .campus {
+  color: #333233;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left; }
+
+#contact .endereco {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  padding-top: 20px;
+  text-align: justify; }

@@ -33,7 +33,7 @@ class Header extends Component {
             <NavbarBrand>
               <NavbarItem>
                 <NavLink className="navbar-item is-centered" to='/'>
-                  <img src="" alt="" />
+                  <p className="logo">SegUFS</p>
                 </NavLink>
               </NavbarItem>
               <NavbarBurger isActive={this.state.isActive} onClick={this.onClickNav} />
@@ -43,7 +43,7 @@ class Header extends Component {
                 <NavLink className="navbar-item uppercase" to='/'>Início</NavLink>
                 <NavLink className="navbar-item uppercase" to='/denuncie'>Denuncie</NavLink>
                 <NavLink className="navbar-item uppercase" to='/informacoes'>Informações</NavLink>
-                <NavLink className="navbar-item uppercase" to='/contatos'>Contatos</NavLink>
+                <NavLink className="navbar-item uppercase" to='/contato'>Contato</NavLink>
               </NavbarEnd>
             </NavbarMenu>
           </Container>
