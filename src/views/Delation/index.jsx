@@ -1,9 +1,84 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+import SimpleReactValidator from 'simple-react-validator';
+
+import Button from '../../components/Button';
 
 //CSS
 import './css/style.css';
 
 class Delation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name:'', rg: '', orgao: '', cpf: '',
+      email: '', campus: '', local: '',
+      descricao_local: '', crime: '',
+      armado: '', tipo_arma: '', item_perdido:'', criminoso: '',
+      answer: '',
+      isLoadingButton: false
+    }
+
+    this.verifyCallback = this.verifyCallback.bind(this);
+    this.validator = new SimpleReactValidator();
+  }
+
+  verifyCallback() {
+    this.setState({ isValidRecaptcha: true });
+  };
+
+  handleFormChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    this.setState({ answer: "" });
+    this.setState({ isLoadingButton: true });
+
+    if (!this.validator.allValid()) {
+      this.validator.showMessages();
+      this.forceUpdate();
+      return;
+    }
+
+    this.setState({ answer: [<i className="material-icons icons">loop</i>, " Enviando sua mensagem..."] });
+
+    axios.post("https://us-central1-hackathonlagarto-c804b.cloudfunctions.net/enviarEmail", {
+      name: this.state.name,
+      rg: this.state.rg,
+      orgao: this.state.orgao,
+      cpf: this.state.cpf,
+      email: this.state.email,
+      campus: this.state.campus,
+      local: this.state.local,
+      descricao_local: this.state.descricao_local,
+      crime: this.state.crime,
+      armado: this.state.armado,
+      tipo_arma: this.state.tipo_arma,
+      criminoso: this.state.criminoso
+    })
+      .then((response) => {
+        if (!response.data.error) {
+          this.setState({ answer: [<i className="material-icons icons">check</i>, " Sua mensagem foi enviada com sucesso!"] });
+          this.setState({ isLoadingButton: false });
+        }
+        else {
+          this.setState({ answer: [<i className="material-icons icons">clear</i>, "Ops!"] });
+          this.setState({ isLoadingButton: false });
+        }
+        //console.log(response);
+      })
+      .catch((error) => {
+        this.setState({ answer: [<i className="material-icons icons">clear</i>, "Ops! Ocorreu algum erro ao enviar sua mensagem. Por favor, tente novamente."] });
+        this.setState({ isLoadingButton: false });
+        //console.log(error);
+      });
+  }
+
   render() {
     return(
       <div id="delation">
@@ -20,7 +95,7 @@ class Delation extends Component {
           </div>
           <div className="columns is-centered">
             <div className="column is-8">
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <div className="columns is-centered">
                   <div className="column is-10">
                     <div className="field">
@@ -31,12 +106,14 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <input
+                              name="name"
                               className="input is-rounded"
                               type="text"
                               placeholder="Ex.: João Santos Silva"
-                              // onChange={props.onChange}
-                              // value={props.value}
+                              value={this.state.name}
+                              onChange={this.handleFormChange}
                             />
+                            <span>{this.validator.message('name', this.state.name, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -54,12 +131,14 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <input
+                              name="rg"
                               className="input is-rounded"
-                              type="number"
+                              type="tex"
                               placeholder="Ex.: 1234567-8"
-                              // onChange={props.onChange}
-                              // value={props.value}
+                              value={this.state.rg}
+                              onChange={this.handleFormChange}
                             />
+                            <span>{this.validator.message('rg', this.state.rg, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -73,12 +152,14 @@ class Delation extends Component {
                       <div className="field">
                         <div className="control">
                           <input
+                            name="orgao"
                             className="input is-rounded"
                             type="tex"
                             placeholder="Ex.: SSP/SE"
-                            // onChange={props.onChange}
-                            // value={props.value}
+                            value={this.state.orgao}
+                            onChange={this.handleFormChange}
                           />
+                          <span>{this.validator.message('orgao', this.state.orgao, 'required', false, { default: "Campo obrigatório" })}</span>
                         </div>
                       </div>
                     </div>
@@ -92,12 +173,14 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <input
+                              name="cpf"
                               className="input is-rounded"
-                              type="number"
+                              type="tex"
                               placeholder="Ex.: 000.000.000-00"
-                              // onChange={props.onChange}
-                              // value={props.value}
+                              value={this.state.cpf}
+                              onChange={this.handleFormChange}
                             />
+                            <span>{this.validator.message('cpf', this.state.cpf, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -115,12 +198,14 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <input
+                              name="email"
                               className="input is-rounded"
                               type="email"
                               placeholder="Ex.: joaosilva@gmail.com"
-                              // onChange={props.onChange}
-                              // value={props.value}
+                              value={this.state.email}
+                              onChange={this.handleFormChange}
                             />
+                            <span>{this.validator.message('email', this.state.email, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -135,7 +220,7 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <div className="select is-rounded">
-                              <select>
+                              <select name="campus" value={this.state.campus} onChange={this.handleFormChange}>
                                 <option>Selecione</option>
                                 <option>Glória</option>
                                 <option>HU Aracaju</option>
@@ -144,6 +229,7 @@ class Delation extends Component {
                                 <option>São Cristóvão</option>
                               </select>
                             </div>
+                            <span>{this.validator.message('campus', this.state.campus, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -158,12 +244,14 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <input
+                              name="local"
                               className="input is-rounded"
                               type="tex"
                               placeholder="Ex.: Didática 1"
-                              // onChange={props.onChange}
-                              // value={props.value}
+                              value={this.state.local}
+                              onChange={this.handleFormChange}
                             />
+                            <span>{this.validator.message('local', this.state.local, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -181,9 +269,13 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <textarea
+                              name="descricao_local"
                               className="textarea"
                               placeholder="Ex.: Próximo a sala 101 da didática 1."
+                              value={this.state.descricao_local}
+                              onChange={this.handleFormChange}
                             />
+                            <span>{this.validator.message('descricao_local', this.state.descricao_local, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -201,13 +293,14 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <div className="select is-rounded">
-                              <select>
+                              <select name="crime" value={this.state.crime} onChange={this.handleFormChange}>
                                 <option>Selecione</option>
                                 <option>Agressão</option>
                                 <option>Furto</option>
                                 <option>Roubo</option>
                               </select>
                             </div>
+                            <span>{this.validator.message('crime', this.state.crime, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
@@ -222,11 +315,17 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <label className="radio">
-                              <input type="radio" name="foobar" />
+                              <input type="radio" name="armado" 
+                                value={this.state.armado}
+                                onChange={this.handleFormChange}
+                              />
                               <span className="opcoes">Sim</span>
                             </label>
                             <label className="radio" style={{paddingLeft: '10px'}}>
-                              <input type="radio" name="foobar" />
+                              <input type="radio" name="armado" 
+                                value={this.state.armado}
+                                onChange={this.handleFormChange}
+                              />
                               <span className="opcoes">Não</span>
                             </label>
                           </div>
@@ -243,7 +342,7 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <div className="select is-rounded">
-                              <select>
+                              <select name="tipo_arma" value={this.state.tipo_arma} onChange={this.handleFormChange}>
                                 <option>Selecione</option>
                                 <option>Arma branca</option>
                                 <option>Arma de fogo</option>
@@ -266,11 +365,12 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <input
+                              name="item_perdido"
                               className="input is-rounded"
                               type="text"
                               placeholder="Ex.: Foi roubado um celular motorola de modelo Moto G4."
-                              // onChange={props.onChange}
-                              // value={props.value}
+                              value={this.state.item_perdido}
+                              onChange={this.handleFormChange}
                             />
                           </div>
                         </div>
@@ -289,15 +389,27 @@ class Delation extends Component {
                         <div className="field">
                           <div className="control">
                             <textarea
+                              name="criminoso"
                               className="textarea"
                               placeholder="Ex.: O criminoso estava com uma bermuda verde e de blusa vermelha, com um boné branco. Possuía uma tatuagem de caveira na canela."
+                              value={this.state.criminoso}
+                              onChange={this.handleFormChange}
                             />
+                            <span>{this.validator.message('criminoso', this.state.criminoso, 'required', false, { default: "Campo obrigatório" })}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div className="field">
+                  <div className="control">
+                    <div align="center">
+                      <Button type="submit">Enviar</Button>
+                    </div>
+                  </div>
+                </div>
+                <p className="answer">{this.state.answer}</p>
               </form>
             </div>
           </div>
